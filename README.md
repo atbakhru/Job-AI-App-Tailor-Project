@@ -1,157 +1,196 @@
-# Job App Tailor - AI Resume & JD Matcher
+# Job App Tailor 🎯
 
-A web application that helps job seekers tailor their resumes to specific job postings using AI-powered analysis and feedback.
+A **full-stack web application** that empowers job seekers to optimize their resumes for specific job postings using **AI-powered analysis**.  
+Built with a **React frontend** and **Spring Boot backend**, featuring **OpenAI GPT-4 integration** for intelligent resume tailoring and career guidance.
 
-## Features
+---
 
-- **Resume Analysis**: Upload or paste resumes in PDF, Markdown, or plain text format
-- **Job Description Fetching**: Automatically fetch job descriptions from Greenhouse/Lever APIs or manual input
-- **AI-Powered Matching**: Uses OpenAI to analyze gaps and provide targeted feedback
-- **Resume Tailoring**: Generate tailored resume bullets and cover letter paragraphs
-- **Interview Preparation**: Get relevant interview questions and STAR story prompts
-- **ATS Optimization**: Keyword alignment scoring for ATS systems
+## 🚀 Key Features
 
-## Tech Stack
+- 📄 **Smart Resume Parser** – Upload PDF/text resumes with automatic skill extraction  
+- 🤖 **AI-Powered Matching** – Intelligent compatibility scoring with gap analysis  
+- ✍️ **Resume Tailoring** – Generate targeted bullet points and cover letters  
+- 🎭 **Interview Prep** – Personalized questions and STAR story prompts  
+- 🔍 **ATS Optimization** – Keyword alignment for applicant tracking systems  
+- 📊 **Real-time Analysis** – Instant feedback on resume-job compatibility  
 
-### Backend
-- **Spring Boot** (Java 17)
-- **PostgreSQL** database
-- **JPA/Hibernate** for ORM
-- **OpenAI API** integration
-- **Apache PDFBox/Tika** for PDF parsing
+---
 
-### Frontend
-- **React** with Vite
-- **Tailwind CSS** for styling
-- **Axios** for API calls
+## 🛠 Tech Stack
 
-### Infrastructure
-- **Docker Compose** for local development
-- **JWT Authentication**
-- **RESTful API** design
+**Frontend:** React 18, Vite, Tailwind CSS, Axios  
+**Backend:** Java 17, Spring Boot 3.2, Maven, Spring Security  
+**Database:** PostgreSQL/H2, JPA/Hibernate  
+**AI Integration:** OpenAI GPT-4 API  
+**Document Processing:** Apache PDFBox, Apache Tika  
+**Infrastructure:** Docker Compose, RESTful APIs
 
-## Project Structure
+---
 
-```
-├── backend/                 # Spring Boot application
-│   ├── src/main/java/      # Java source code
-│   ├── src/main/resources/ # Configuration files
-│   └── pom.xml             # Maven dependencies
-├── frontend/               # React application
-│   ├── src/                # React source code
-│   ├── public/             # Static assets
-│   └── package.json        # npm dependencies
-├── docker-compose.yml      # Docker configuration
-└── README.md              # This file
-```
+## ✨ Features
 
-## Getting Started
+- **Upload & Parse** resumes in **PDF, Markdown, or plain text** formats  
+- **Intelligent skill extraction** from both resumes and job descriptions  
+- **AI-powered compatibility scoring** with detailed gap analysis  
+- **Generate tailored content** including resume bullets and cover letters  
+- **Interview preparation** with role-specific questions and STAR prompts  
+- **ATS-friendly optimization** with keyword density analysis  
+- **Clean, professional UI** with real-time processing indicators  
+
+---
+
+## 🎯 Who's This For?
+
+Perfect for **job seekers** who want to:  
+- **Optimize their resumes** for specific roles  
+- Get **AI-powered career insights**  
+- **Improve interview preparation**  
+- **Beat ATS systems** with targeted optimization  
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Java 17 or higher
-- Node.js 18+ and npm
+- Node.js 18+
+- Java 17+
+- Maven 3.6+
+- OpenAI API Key
 - Docker & Docker Compose (optional)
-- PostgreSQL (or use Docker)
-- OpenAI API key
-
-### Environment Setup
-
-1. Copy the environment template:
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Edit `.env` file and add your API keys:
-   ```
-   OPENAI_API_KEY=your-openai-api-key-here
-   JWT_SECRET=your-secure-jwt-secret-key
-   ```
 
 ### Installation
 
-#### Option 1: Using Docker Compose (Recommended)
-```bash
-# Start all services (database, backend, frontend)
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-```
-
-#### Option 2: Manual Setup
-
-1. **Start PostgreSQL Database**
+1. **Clone the repository**
    ```bash
-   # Using Docker
-   docker run --name jobapp-postgres -e POSTGRES_DB=jobapptailor -e POSTGRES_USER=jobapp_user -e POSTGRES_PASSWORD=jobapp_password -p 5432:5432 -d postgres:15
+   git clone https://github.com/yourusername/job-app-tailor.git
+   cd job-app-tailor
    ```
 
-2. **Start Backend**
+2. **Environment Setup**
+   ```bash
+   # Copy environment template
+   cp .env.example .env
+   
+   # Edit .env file with your API keys
+   OPENAI_API_KEY="your-openai-api-key-here"
+   JWT_SECRET="your-secure-jwt-secret"
+   ```
+
+3. **Quick Start with Docker**
+   ```bash
+   # Start all services (recommended)
+   docker-compose up -d
+   
+   # View logs
+   docker-compose logs -f
+   ```
+
+4. **Manual Setup (Alternative)**
+   
+   **Backend:**
    ```bash
    cd backend
    mvn spring-boot:run
    ```
-
-3. **Start Frontend**
+   
+   **Frontend:**
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
 
-### Development
+5. **Access the application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8080
+   - H2 Console: http://localhost:8080/h2-console
 
-#### Using VS Code Tasks
-This project includes VS Code tasks for easy development:
+## 📝 Usage
 
-- **Start Full Application**: `Ctrl+Shift+P` → "Tasks: Run Task" → "Start Full Application"
-- **Start Backend Only**: "Start Backend Server"
-- **Start Frontend Only**: "Start Frontend Server"
-- **Build Backend**: "Build Backend"
-- **Build Frontend**: "Build Frontend"
+1. **Upload Resume**: Drag & drop your PDF resume or paste text content
+2. **Add Job Description**: Copy and paste the target job posting
+3. **AI Analysis**: Get instant compatibility scores and gap analysis
+4. **Optimize Content**: Generate tailored resume bullets and cover letters
+5. **Interview Prep**: Access personalized interview questions and STAR prompts
 
-#### Manual Commands
+## 🔧 Configuration
 
-##### Backend Development
+### Environment Variables
+- `OPENAI_API_KEY`: Your OpenAI API key for GPT-4
+- `JWT_SECRET`: Secret key for JWT token generation
+- `SPRING_PROFILES_ACTIVE`: Set to 'prod' for production database
+
+### API Endpoints
+- `POST /api/resume/parse` - Parse and extract resume content
+- `POST /api/job/fetch` - Process job description text
+- `POST /api/match` - Generate compatibility analysis
+- `POST /api/ai/tailor` - Create tailored content with AI
+
+## 📁 Project Structure
+
+```
+├── backend/                 # Spring Boot REST API
+│   ├── src/main/java/      # Java source code
+│   │   ├── controller/     # REST controllers
+│   │   ├── service/        # Business logic
+│   │   ├── model/          # JPA entities
+│   │   ├── repository/     # Data access layer
+│   │   └── dto/            # Data transfer objects
+│   ├── src/main/resources/ # Configuration files
+│   └── pom.xml             # Maven dependencies
+├── frontend/               # React SPA
+│   ├── src/                # React components
+│   ├── public/             # Static assets
+│   └── package.json        # npm dependencies
+├── docker-compose.yml      # Multi-service orchestration
+└── README.md              # This file
+```
+
+## 🎮 Development
+
+### VS Code Tasks (Recommended)
+- `Ctrl+Shift+P` → "Tasks: Run Task" → "Start Full Application"
+- "Start Backend Server" - Launch Spring Boot API
+- "Start Frontend Server" - Launch React dev server
+- "Build Backend" - Maven compile and package
+- "Build Frontend" - Vite production build
+
+### Manual Commands
+
+**Backend Development:**
 ```bash
 cd backend
-mvn compile                    # Compile
-mvn test                      # Run tests
-mvn spring-boot:run           # Start development server
-mvn clean package            # Build JAR file
+mvn compile              # Compile Java source
+mvn test                # Run unit tests
+mvn spring-boot:run     # Start development server
+mvn clean package       # Build production JAR
 ```
 
-##### Frontend Development
+**Frontend Development:**
 ```bash
 cd frontend
-npm install                   # Install dependencies
-npm run dev                   # Start development server
-npm run build                 # Build for production
-npm run preview               # Preview production build
+npm install             # Install dependencies
+npm run dev            # Start development server
+npm run build          # Build for production
+npm run preview        # Preview production build
 ```
 
-## API Endpoints
+## 💾 Database Schema
 
-- `POST /api/resume/parse` - Parse and extract resume content
-- `POST /api/job/fetch` - Fetch job description from URL
-- `POST /api/match` - Generate matching score and analysis
-- `POST /api/ai/tailor` - Generate AI-powered tailored content
+- **users** - User authentication and profiles
+- **resumes** - Resume storage with extracted skills
+- **job_posts** - Job descriptions and requirements
+- **matches** - Compatibility scores and analysis
+- **ai_outputs** - AI-generated tailored content
 
-## Database Schema
-
-- **users** - User accounts and authentication
-- **resumes** - Resume storage and extracted data
-- **job_posts** - Job posting data and requirements
-- **matches** - Resume-job matching results
-- **ai_outputs** - AI-generated content and feedback
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-MIT License
+This project is licensed under the MIT License - see the LICENSE file for details.
