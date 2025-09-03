@@ -1,0 +1,15 @@
+package com.jobapptailor.repository;
+
+import com.jobapptailor.model.JobPost;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface JobPostRepository extends JpaRepository<JobPost, Long> {
+    
+    Optional<JobPost> findByUrl(String url);
+    
+    boolean existsByUrl(String url);
+}
